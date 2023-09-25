@@ -2,10 +2,11 @@ const express=require('express');
 const app=express();
 const {connection }=require('./db');
 const { userRouter } = require('./routes/user.route');
+const cors=require('cors')
 const { dashboardRouter } = require('./routes/dashboard.route');
 require('dotenv').config()
 app.use(express.json());
-
+app.use(cors())
 app.use('/users',userRouter)
 app.use('/dashboard',dashboardRouter)
 app.listen(process.env.port,async()=>{
